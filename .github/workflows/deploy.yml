@@ -1,0 +1,39 @@
+name: RepoDeploy
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.RAPYD_REPO_SSH_PRIVATE_KEY }}
+          known_hosts: unnecessary
+
+      - name: Adding Known Hosts
+        run: |
+          currBranch=$(echo ${{ github.ref }} | sed 's/refs\/heads\///');
+          destPath="/var/www/webroot/ROOT/2024v5/rapydssl-addon/b/$currBranch";
+          ssh-keyscan -p ${{ vars.RAPYD_REPO_HOST_PORT }} -H ${{ vars.RAPYD_REPO_HOST }} >> ~/.ssh/known_hosts
+          echo "RAPYD_DEST_PATH=$destPath" >> $GITHUB_ENV
+      - name: Make Destination dest
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.RAPYD_REPO_HOST }}
+          username: ${{ vars.RAPYD_REPO_USER }}
+          key: ${{ secrets.RAPYD_REPO_SSH_PRIVATE_KEY }}
+          port: ${{ vars.RAPYD_REPO_HOST_PORT }}
+          envs: RAPYD_DEST_PATH
+          script: |
+            mkdir -p $RAPYD_DEST_PATH;
+
+      - name: Deploy with rsync
+        run: |
+           echo "Dest Path - $RAPYD_DEST_PATH"
+           rsync -avz --exclude=.*/ -e  "ssh -p ${{ vars.RAPYD_REPO_HOST_PORT }}" ./ ${{ vars.RAPYD_REPO_USER }}@${{ vars.RAPYD_REPO_HOST }}:$RAPYD_DEST_PATH
