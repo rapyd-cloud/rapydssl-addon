@@ -4,7 +4,7 @@
 
 **[ZeroSSL](https://zerossl.com/)** Easily secure any site by putting SSL management on autopilot, supporting one-step validation and renewal via REST API.
 
-**This fork extends the underlying LetsEncrypt Addon to support ZeroSSL Certification**
+**NOTE: This fork extends the underlying LetsEncrypt Addon to support ZeroSSL Certification**
 
 The installation can be performed on one of the following Jelastic containers as an entry point:
 * Load Balancers - _NGINX_, _Apache LB_, _HAProxy_, _Varnish_
