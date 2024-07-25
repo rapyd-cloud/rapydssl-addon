@@ -6,6 +6,7 @@
 
 <p align="center"> 
 <strong>NOTE: This fork extends the underlying LetsEncrypt Addon to support ZeroSSL Certification</strong>
+Any references to Let's Encrypt in this documentation can be interchanged with ZeroSSL 
 </p>
 
 
