@@ -1,8 +1,7 @@
-**Let's Encrypt** is a free solution for automated SSL certificates issuing. 
+**RapydSSL** is a free solution for automated SSL certificates issuing utilizing ZeroSSL or Let's Encrypt
 Just select a required *Environment* from the list below and specify the attached *External Domain(s)*.  
 
 **Note:** 
-* Your use of Let’s Encrypt is entirely voluntarily. By installing Let’s Encrypt, you are consenting that your personal information (email and domain) will be processed as set out in [Let’s Encrypt Privacy Policy](https://letsencrypt.org/privacy/).
 * Public IP address will be automatically attached to all nodes within the entry point layer (application server or load balancer).
 * Let’s Encrypt has a set of [limitations while issuing certificates](https://letsencrypt.org/docs/rate-limits/). If they don’t meet the requirements of your project, please consider using alternative SSL certificate authority.
 * On the Node.js server, issued certificates are just stored at the /var/lib/jelastic/keys directory. Check the guide on how to read [SSL certificates on Node.js](https://www.virtuozzo.com/application-platform-docs/nodejs-le-ssl/).
