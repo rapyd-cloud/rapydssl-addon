@@ -67,7 +67,7 @@ settings:
       name: customDomains
       vtype: domainlist
       caption: External Domain(s)
-      placeholder: leave blank to get a test certificate for this environment domain
+      placeholder: leave blank to get test certificate for env vanity domain
       required: false
       height: 200
       width: 400
