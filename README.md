@@ -1,4 +1,4 @@
-# Let’s Encrypt Add-On for Automated SSL Certificates Configuration
+# Rapyd SSL Add-On for Automated SSL Certificates Configuration using Let’s Encrypt or ZeroSSL
 
 **[Let’s Encrypt](https://letsencrypt.org/)** is a free and open Certificate Authority, that simplifies and automates processes of browser-trusted SSL certificates issuing and appliance. Using this package you can automatically install Let’s Encrypt as an add-on to your environment.
 
