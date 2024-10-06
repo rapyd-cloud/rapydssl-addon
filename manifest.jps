@@ -53,15 +53,16 @@ mixins:
 settings:
   fields:
     - type: list
-      name: sslservice
-      caption: string
+      name: sslprovider
+      caption: SSL Provider
       values:
         value1: ZeroSSL
         value2: LetsEncrypt
       hideLabel: false
       hidden: false
-      editable: true
+      editable: false
       default: ZeroSSL
+      forceSelection: true
     - type: string
       name: customDomains
       vtype: domainlist
