@@ -2,7 +2,7 @@ version: 5.5.0
 type: update
 build: 2021006
 id: rapydssl-addon
-name: RapydSSL for ZeroSSL and Let's Encrypt
+name: RapydSSL 5.5.0 for ZeroSSL and Let's Encrypt
 
 categories:
 - apps/dev-and-admin-tools
@@ -44,6 +44,7 @@ description:
 globals:
   scriptSufix: rapydssl
   app_id: rapydssl-addon
+  servicedefault: ZeroSSL
 
 mixins:
   - configs/vers.yaml
@@ -51,14 +52,26 @@ mixins:
 
 settings:
   fields:
+    - type: list
+      name: sslservice
+      caption: string
+      values:
+        value1: ZeroSSL
+        value2: LetsEncrypt
+      hideLabel: false
+      hidden: false
+      editable: true
+      default: ZeroSSL
     - type: string
       name: customDomains
       vtype: domainlist
       caption: External Domain(s)
       placeholder: leave blank to get a test certificate for this environment domain
       required: false
+      height: 200
+      width: 400
       tooltip: |
-        Each of the specified external domains should be preliminarily bound via DNS record to the external IP of the node where add-on is installed (either directly via <a href="https://docs.jelastic.com/custom-domains/#how-to-configure-dns-record" target="_blank">A Record</a> or through CDN / external balancer proxy).<br><br>
+        Enter a comma separated list of domains. Each of the specified external domains should be ALREADY be bound via DNS record to the external IP of the node where add-on is installed (either directly via <a href="https://docs.jelastic.com/custom-domains/#how-to-configure-dns-record" target="_blank">A Record</a> or through CDN / external balancer proxy).<br><br>
         <b>Note:</b> Leave this field blank for issuing a test SSL certificate bound to the internal environment domain.
 
 onBeforeRedeployContainer [${targetNodes.nodeGroup}]:
